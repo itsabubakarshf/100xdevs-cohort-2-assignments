@@ -16,6 +16,54 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+class Calculator {
+  result=0;
+  Calculator(result){
+    this.result=result
+  }
+  add(number) {
+    this.result+=number;
+  }
+  subtract(number) {
+    this.result-=number;
+  }
+  multiply(number) {
+    this.result*=number;
+  }
+  divide(number){
+    if(number===0) throw new Error("number shouldnt be zero")
+    else this.result=this.result/number===NaN ? 0:this.result/number;
+  }
+  clear(){
+    this.result=0
+  }
+  getResult(){
+    return this.result
+  }
+  calculate(expression){
+    // remove extra spaces 
+    // in-case of non-numeric characters throw an error straight way
+    let cleanExp=expression.replace(/\s/g, "");
+    if(/[^0-9+\-*/()]+/.test(cleanExp)){
+      throw new Error("ERROR: non-numeric characters")
+    }else{
+      // implement stack to check if the order of brackets are good
+      let arrExpression=cleanExp.split("")
+      let stack=[]
+      arrExpression.map((exp)=>{
+        switch (exp){
+          case '(':
+            stack.push(exp)
+          case ')':
+            stack.p
+        }
+      })
+
+    }
+  }
+
+}
+let calc=new Calculator();
+calc.calculate('10 * (2 + 3)')
 
 module.exports = Calculator;
